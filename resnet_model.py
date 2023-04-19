@@ -24,7 +24,7 @@ app = Flask(__name__)
 def detect(image):
     box = face_model(image)[0].boxes
     if len(box.conf) == 0:
-	return 0, 0
+	return None, None
     xyxy = box.xyxy[0].tolist()
     image = image[int(xyxy[1]): int(xyxy[3]), int(xyxy[0]):int(xyxy[2])]
     
@@ -92,7 +92,7 @@ def check():
         encoded_img = np.fromstring(img_byte, dtype = np.uint8)
         img = cv2.imdecode(encoded_img, cv2.IMREAD_COLOR)
         face, num = detect(image = img)
-        if num == 0:
+        if num == None:
             return jsonify({'class_name': None})
     
     return jsonify({'class_name' : "true"})
