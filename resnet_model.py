@@ -6,7 +6,6 @@ import torchvision.transforms as transforms
 from PIL import Image
 from flask import Flask, jsonify, request
 import json
-import dlib
 from ultralytics import YOLO
 
 
