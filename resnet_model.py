@@ -23,6 +23,8 @@ app = Flask(__name__)
 
 def detect(image):
     box = face_model(image)[0].boxes
+    if len(box.conf) == 0:
+	return 0 ,0
     xyxy = box.xyxy[0].tolist()
     image = image[int(xyxy[1]): int(xyxy[3]), int(xyxy[0]):int(xyxy[2])]
     
