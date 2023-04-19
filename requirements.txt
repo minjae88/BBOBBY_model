@@ -1,0 +1,11 @@
+#selenium
+#beautifulsoup4
+#python 3.9 
+torch
+torchvision
+opencv-python
+matplotlib
+tqdm
+flask
+
+ultralytics
