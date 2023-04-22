@@ -65,7 +65,7 @@ def man():
     
     class_id = get_man_prediction(image=face)
     class_id = class_id.tolist()
-    return jsonify({'class_name': man_class_name[class_id[0]]})
+    return jsonify({'class_name': class_id[0]})
  
     
 @app.route('/woman', methods=["POST"])
@@ -82,7 +82,7 @@ def woman():
 
     class_id = get_woman_prediction(image=face)
     class_id = class_id.tolist()
-    return jsonify({'class_name': woman_class_name[class_id[0]]})
+    return jsonify({'class_name': class_id[0]})
  
 @app.route('/check', methods=["POST"])
 def check():
