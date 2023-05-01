@@ -86,16 +86,13 @@ def woman():
  
 @app.route('/check', methods=["POST"])
 def check():
-    for i in range(1,len(request.files) + 1):
-        file = request.files['image' + str(i)]
-        print(i)
-        img_byte = file.read()
-        encoded_img = np.fromstring(img_byte, dtype = np.uint8)
-        img = cv2.imdecode(encoded_img, cv2.IMREAD_COLOR)
-        face, num = detect(image = img)
-        if num == None:
-            return jsonify({'class_name': None})
-    
+    file = request.files['image']
+    img_byte = file.read()
+    encoded_img = np.fromstring(img_byte, dtype = np.uint8)
+    img = cv2.imdecode(encoded_img, cv2.IMREAD_COLOR)
+    face, num = detect(image = img)
+    if num == None:
+        return jsonify({'class_name': None})
     return jsonify({'class_name' : "true"})
 
 if __name__ == '__main__':
